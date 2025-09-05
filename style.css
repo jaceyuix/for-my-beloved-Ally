@@ -1,0 +1,146 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300italic);
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: radial-gradient(ellipse at center, #a27bcc 0%, #6c5299 100%);
+}
+
+/* Cake */
+.cake {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+}
+.cake:after {
+  background: #ebe3e1;
+  border-radius: 100px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 2px;
+}
+
+/* Candle */
+.velas {
+  background: #ffffff;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -2.5px;
+  margin-top: -8.3px;
+  width: 5px;
+  height: 16.6px;
+}
+.velas:after, .velas:before {
+  background: rgba(255, 0, 0, 0.4);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.2px;
+}
+.velas:after { top: 25%; left: 0; }
+.velas:before { top: 45%; left: 0; }
+
+/* Fire */
+.fuego {
+  border-radius: 100%;
+  box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  margin-left: -3.3px;
+  width: 6.6px;
+  height: 12.5px;
+}
+.fuego:nth-child(1) { animation: fuego 2s infinite; }
+.fuego:nth-child(2) { animation: fuego 1.5s infinite; }
+.fuego:nth-child(3) { animation: fuego 1s infinite; }
+.fuego:nth-child(4) { animation: fuego 0.5s infinite; }
+.fuego:nth-child(5) { animation: fuego 0.2s infinite; }
+
+@keyframes fuego {
+  0%   { background: rgba(254, 248, 97, 0.5); transform: translateY(0) scale(1); }
+  50%  { background: rgba(255, 50, 0, 0.1); transform: translateY(-20px) scale(0); }
+  100% { background: rgba(254, 248, 97, 0.5); transform: translateY(0) scale(1); }
+}
+
+/* Frosting */
+.cobertura {
+  background: #ece7e3;
+  border-radius: 50px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  margin-left: -27.7px;
+  margin-top: -5px;
+  width: 55.5px;
+  height: 12.5px;
+  z-index: 10;
+}
+.cobertura:after, .cobertura:before {
+  background: #ece7e3;
+  border-radius: 100px;
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 10px;
+}
+.cobertura:after { top: 6.6px; right: 14.2px; }
+.cobertura:before { top: 10px; right: 9.0px; }
+
+/* Cake base */
+.bizcocho {
+  background: #6d3826;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -25px;
+  width: 50px;
+  height: 33.3px;
+}
+.bizcocho:after, .bizcocho:before {
+  background: rgba(236, 231, 227, 0.6);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 5px;
+}
+.bizcocho:after { top: 30%; left: 0; }
+.bizcocho:before { top: 60%; left: 0; }
+
+/* Text */
+h1, p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  width: 100%;
+  user-select: none;
+}
+h1 {
+  color: #fff;
+  font-size: 1.3em;
+  margin-top: 180px; /* moved below cake */
+}
+p {
+  color: rgba(236, 231, 227, 0.6);
+  font-size: 0.8em;
+  line-height: 2em;
+}
+
+/* Notes page */
+#notesPage {
+  text-align: center;
+  padding: 40px;
+  color: white;
+}
