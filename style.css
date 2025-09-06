@@ -134,8 +134,9 @@ h1 {
 }
 h2 {
   color: #fff;
-  font-size: 1.3em;
-  margin-top: 140px; /* moved below cake */
+  font-size: 0.9em;
+  margin-top: 5px; /* small margin to appear below h1 */
+  text-align: center;
 }
 p {
   color: rgba(236, 231, 227, 0.6);
