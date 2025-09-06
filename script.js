@@ -183,6 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fuego').forEach(f => f.style.display = 'none');
     if (cakeEl) cakeEl.style.display = 'none';
     if (birthdayText) birthdayText.style.display = 'none';
+
+    const subtitle = document.getElementById('subtitle');
+    if (subtitle) subtitle.style.display = 'none';
+
     try { if (micStream) micStream.getTracks().forEach(t => t.stop()); } catch(e){}
     try { if (audioCtx) audioCtx.close().catch(()=>{}); } catch(e){}
     launchConfetti();
