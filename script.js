@@ -261,7 +261,8 @@ const popup = document.getElementById("popup");
 const popupMessage = document.getElementById("popupMessage");
 const closeBtn = document.getElementById("closeBtn");
 
-let currentBtn = null; // tracks which button/song is playing
+let currentBtn = null;   // currently active button
+let currentSrc = "";     // currently loaded song
 
 // Play/pause toggle
 document.querySelectorAll(".play-btn").forEach(btn => {
@@ -269,8 +270,8 @@ document.querySelectorAll(".play-btn").forEach(btn => {
     e.stopPropagation(); // prevent triggering popup
     const src = btn.dataset.src;
 
-    if (audio.src.includes(src)) {
-      // Same song
+    if (currentSrc === src) {
+      // Same song: toggle play/pause
       if (audio.paused) {
         audio.play();
         btn.textContent = "⏸";
@@ -279,7 +280,7 @@ document.querySelectorAll(".play-btn").forEach(btn => {
         btn.textContent = "▶";
       }
     } else {
-      // New song
+      // Different song: load and play
       audio.src = src;
       audio.play();
       btn.textContent = "⏸";
@@ -290,6 +291,7 @@ document.querySelectorAll(".play-btn").forEach(btn => {
       }
 
       currentBtn = btn;
+      currentSrc = src;
     }
   });
 });
@@ -307,6 +309,7 @@ document.querySelectorAll(".song-card").forEach(card => {
 closeBtn.addEventListener("click", () => {
   popup.classList.remove("active");
 });
+
 
 
 
