@@ -267,31 +267,18 @@ let currentSrc = "";     // currently loaded song
 // Play/pause toggle
 document.querySelectorAll(".play-btn").forEach(btn => {
   btn.addEventListener("click", (e) => {
-    e.stopPropagation(); // prevent triggering popup
+    e.stopPropagation(); // prevent popup trigger
     const src = btn.dataset.src;
-
-    if (currentSrc === src) {
-      // Same song: toggle play/pause
-      if (audio.paused) {
-        audio.play();
-        btn.textContent = "⏸";
-      } else {
-        audio.pause();
-        btn.textContent = "▶";
-      }
-    } else {
-      // Different song: load and play
+    if (audio.src !== src) {
       audio.src = src;
       audio.play();
+      btn.textContent = "⏸"; // change button icon
+    } else if (audio.paused) {
+      audio.play();
       btn.textContent = "⏸";
-
-      // reset previous button
-      if (currentBtn && currentBtn !== btn) {
-        currentBtn.textContent = "▶";
-      }
-
-      currentBtn = btn;
-      currentSrc = src;
+    } else {
+      audio.pause();
+      btn.textContent = "▶";
     }
   });
 });
