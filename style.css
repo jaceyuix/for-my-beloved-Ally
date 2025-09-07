@@ -14,7 +14,7 @@ body {
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(2); /* scales everything inside 2x */
+  transform: translate(-50%, -50%) scale(3); /* scales everything inside 2x */
 }
 .cake {
   position: absolute;
