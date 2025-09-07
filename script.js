@@ -256,33 +256,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  const songs = document.querySelectorAll(".song");
 const audio = document.getElementById("song");
 const popup = document.getElementById("popup");
 const popupMessage = document.getElementById("popupMessage");
 const closeBtn = document.getElementById("closeBtn");
 
-songs.forEach(song => {
-  song.addEventListener("click", () => {
-    const src = song.getAttribute("data-src");
-    const message = song.getAttribute("data-message");
-
-    // Play song
-    audio.src = src;
-    audio.play();
-
-    // Show popup with message
+// Popup trigger (click on card/image/text)
+document.querySelectorAll(".song-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const message = card.dataset.message;
     popupMessage.textContent = message;
     popup.classList.add("active");
   });
 });
 
-// Close popup and stop song
+// Play button (click only plays music)
+document.querySelectorAll(".play-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevent popup trigger
+    const src = btn.dataset.src;
+    audio.src = src;
+    audio.play();
+  });
+});
+
+// Close popup
 closeBtn.addEventListener("click", () => {
   popup.classList.remove("active");
-  audio.pause();
-  audio.currentTime = 0;
 });
+
 
 
   console.log('Birthday blow script loaded — attempting mic access immediately. Manual fallback will appear if blocked.');
