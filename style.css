@@ -226,3 +226,9 @@ p {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.ex1 {
+  max-height: 200px;  /* limit the height so it scrolls */
+  overflow-y: auto;   /* vertical scroll only */
+  padding: 10px;
+}
