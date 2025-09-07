@@ -214,7 +214,7 @@ p {
   background: crimson;
   color: white;
   cursor: pointer;
-  font-size: auto;
+  font-size: 600px;
   transition: 0.3s;
 }
 
