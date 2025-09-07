@@ -150,3 +150,87 @@ p {
   padding: 40px;
   color: white;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 50px;
+}
+
+.song {
+  display: inline-block;
+  margin: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.song img {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  border: 2px solid white;
+  transition: 0.3s;
+}
+
+.song img:hover {
+  transform: scale(1.05);
+  border-color: crimson;
+}
+
+.song p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: white;
+}
+
+/* Fullscreen popup */
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,1); /* full black */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.popup.active {
+  display: flex;
+}
+
+.popup-content {
+  text-align: center;
+  padding: 20px;
+  animation: fadeText 0.7s ease;
+}
+
+.popup-message {
+  font-size: 32px;
+  color: white;
+  margin-bottom: 30px;
+  max-width: 90%;
+}
+
+.close-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  background: crimson;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  background: darkred;
+}
+
+@keyframes fadeText {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
