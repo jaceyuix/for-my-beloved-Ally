@@ -191,6 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
     notesEl.style.flexDirection = 'column';
     notesEl.style.alignItems = 'center';
     notesEl.style.justifyContent = 'center';
+    document.querySelectorAll('.song').forEach(song => {
+    song.style.display = 'block';
+  });
     debug.style.display = 'none';
     if (manualBtn) manualBtn.remove();
   }
