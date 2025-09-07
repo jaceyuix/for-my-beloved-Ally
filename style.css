@@ -152,7 +152,7 @@ p {
 }
 
 .song {
-  display: inline-block;
+  display: none;
   margin: 20px;
   cursor: pointer;
   text-align: center;
