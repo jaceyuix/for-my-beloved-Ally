@@ -1,14 +1,14 @@
-// Fixed & cleaned robust blow-detection + page-switch script
+// Robust blow-detection + page-switch script
 // Paste into JS panel (CodePen) or script.js (your project).
 // IMPORTANT: run in Full Page / Debug View (CodePen) so getUserMedia isn't blocked.
 
 document.addEventListener('DOMContentLoaded', () => {
   // ---------- CONFIG ----------
   const BASELINE_MS = 300;       // how long to sample ambient noise (ms)
-  const REQUIRED_FRAMES = 7;     // frames above threshold required (~100-200ms)
-  const MIN_THRESHOLD = 0.012;   // minimum RMS threshold (very quiet)
-  const THRESH_STD_FACTOR = 3.0; // threshold = mean + factor * std
-  const TEST_MODE = false;       // set true to auto-show surprise (for debug)
+  const REQUIRED_FRAMES = 7;      // frames above threshold required (~100-200ms)
+  const MIN_THRESHOLD = 0.012;    // minimum RMS threshold (very quiet)
+  const THRESH_STD_FACTOR = 3.0;  // threshold = mean + factor * std
+  const TEST_MODE = false;        // set true to auto-show surprise (for debug)
   // ----------------------------
 
   // Helpful element selectors (flexible to match your HTML)
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const source = audioCtx.createMediaStreamSource(micStream);
     analyser = audioCtx.createAnalyser();
-    analyser.fftSize = 1024; // time-domain resolution
+    analyser.fftSize = 1024;
     source.connect(analyser);
     dataArray = new Uint8Array(analyser.fftSize);
 
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const rms = computeRMS(dataArray);
       baselineSamples.push(rms);
       // show debug immediate during baseline
-      debug.style.display = TEST_MODE ? 'block' : 'none';
+      debug.style.display = 'block';
       debug.textContent = `Sampling ambient... RMS: ${rms.toFixed(3)}`;
       if (performance.now() - startTime < BASELINE_MS) {
         requestAnimationFrame(baselineLoop);
@@ -161,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const rms = computeRMS(buf);
 
       // debug UI
-      debug.style.display = TEST_MODE ? 'block' : 'none';
       debug.textContent = `RMS:${rms.toFixed(3)} thr:${threshold.toFixed(3)} frames:${consecutive}`;
 
       if (rms > threshold) {
@@ -180,41 +179,16 @@ document.addEventListener('DOMContentLoaded', () => {
     loop();
   }
 
-  // --- Manual popups ---
-  function openPopup(id) {
-    const el = document.getElementById(id);
-    if (el) el.style.display = "block";
-  }
-
-  function closePopup(e) {
-    if (e.target && e.target.classList && e.target.classList.contains("popup")) {
-      e.target.style.display = "none";
-    }
-  }
-
-  // attach manual popup listeners only if elements exist
-  const note1Btn = document.getElementById("note1");
-  const note2Btn = document.getElementById("note2");
-  if (note1Btn) note1Btn.addEventListener("click", () => openPopup("popup1"));
-  if (note2Btn) note2Btn.addEventListener("click", () => openPopup("popup2"));
-  window.addEventListener("click", closePopup);
-
   function handleBlowDetected() {
-    // hide flames
     document.querySelectorAll('.fuego').forEach(f => f.style.display = 'none');
-    // hide cake and birthday text if present
     if (cakeEl) cakeEl.style.display = 'none';
     if (birthdayText) birthdayText.style.display = 'none';
 
-    // optional subtitle hide
     const subtitle = document.getElementById('subtitle');
     if (subtitle) subtitle.style.display = 'none';
 
-    // stop and release mic
     try { if (micStream) micStream.getTracks().forEach(t => t.stop()); } catch(e){}
     try { if (audioCtx) audioCtx.close().catch(()=>{}); } catch(e){}
-
-    // confetti & reveal notes
     launchConfetti();
     notesEl.style.display = 'flex';
     notesEl.style.flexDirection = 'column';
@@ -222,9 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
     notesEl.style.justifyContent = 'center';
     debug.style.display = 'none';
     if (manualBtn) manualBtn.remove();
-
-    // if you want to auto-open the first popup (optional), uncomment:
-    // openPopup('popup1');
   }
 
   function launchConfetti(seconds = 2) {
@@ -285,17 +256,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  console.log('Birthday blow script loaded — attempting mic access soon. Manual fallback will appear if blocked.');
+  console.log('Birthday blow script loaded — attempting mic access immediately. Manual fallback will appear if blocked.');
 
   // Attempt mic immediately on page load
-  // Note: some browsers require a user gesture to allow audio context - if it fails, manual button will show
-  setTimeout(() => {
-    startMic().catch(()=>{ /* handled inside */ });
-  }, 100); // small delay to let DOM settle
+  startMic();
 
-  // fallback manual button if mic not started within 1.5s
+  // fallback manual button if mic not started within 2s
   setTimeout(() => {
     if (!audioCtx) showManualButton();
-  }, 1500);
+  }, 2000);
 
 });
