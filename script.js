@@ -256,31 +256,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-const audio = document.getElementById("song");
 const popup = document.getElementById("popup");
 const popupMessage = document.getElementById("popupMessage");
 const closeBtn = document.getElementById("closeBtn");
 
-let currentBtn = null;   // currently active button
-let currentSrc = "";     // currently loaded song
+document.addEventListener('DOMContentLoaded', () => {
 
-// Play/pause toggle
-document.querySelectorAll(".play-btn").forEach(btn => {
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation(); // prevent popup trigger
-    const src = btn.dataset.src;
-    if (audio.src !== src) {
-      audio.src = src;
-      audio.play();
-      btn.textContent = "⏸"; // change button icon
-    } else if (audio.paused) {
-      audio.play();
-      btn.textContent = "⏸";
-    } else {
-      audio.pause();
-      btn.textContent = "▶";
-    }
+  const popup = document.getElementById("popup");
+  const popupMessage = document.getElementById("popupMessage");
+  const closeBtn = document.getElementById("closeBtn");
+
+  // Only the song cards trigger popup
+  document.querySelectorAll(".song-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const message = card.dataset.message;
+      popupMessage.textContent = message;
+      popup.classList.add("active");
+    });
   });
+
+  // Close popup
+  closeBtn.addEventListener("click", () => {
+    popup.classList.remove("active");
+  });
+
 });
 
 // Popup trigger (click on card/image/text)

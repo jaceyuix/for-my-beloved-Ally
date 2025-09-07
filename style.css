@@ -182,22 +182,6 @@ p {
   color: white;
 }
 
-.play-btn {
-  margin-top: 10px;
-  padding: 8px 15px;
-  font-size: 14px;
-  border: none;
-  border-radius: 70%;
-  background: #1db954; /* Spotify green */
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.play-btn:hover {
-  background: #14833b;
-}
-
 /* Fullscreen popup */
 .popup {
   position: fixed;
