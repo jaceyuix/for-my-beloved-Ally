@@ -1,6 +1,3 @@
-// Robust blow-detection + page-switch script
-// Paste into JS panel (CodePen) or script.js (your project).
-// IMPORTANT: run in Full Page / Debug View (CodePen) so getUserMedia isn't blocked.
 
 document.addEventListener('DOMContentLoaded', () => {
   // ---------- CONFIG ----------
