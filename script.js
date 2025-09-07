@@ -179,6 +179,22 @@ document.addEventListener('DOMContentLoaded', () => {
     loop();
   }
 
+  // --- Manual popups ---
+  function openPopup(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+  function closePopup(e) {
+  if (e.target.classList.contains("popup")) {
+    e.target.style.display = "none";
+  }
+}
+
+document.getElementById("note1").addEventListener("click", () => openPopup("popup1"));
+document.getElementById("note2").addEventListener("click", () => openPopup("popup2"));
+window.addEventListener("click", closePopup);
+
+
   function handleBlowDetected() {
     document.querySelectorAll('.fuego').forEach(f => f.style.display = 'none');
     if (cakeEl) cakeEl.style.display = 'none';
