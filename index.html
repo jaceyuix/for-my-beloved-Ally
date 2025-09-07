@@ -30,6 +30,38 @@
     <h2> for my babyy</h2>
     <p>placeholder</p>
   </div>
+  
+    <!-- Songs with images -->
+  <div class="song" 
+       data-src="song1.mp3" 
+       data-message="💌 This is the first song's full-screen message.">
+    <img src="cover1.jpg" alt="Song 1">
+    <p>Song 1</p>
+  </div>
+
+  <div class="song" 
+       data-src="song2.mp3" 
+       data-message="🌹 Here's the second song's message covering the screen.">
+    <img src="cover2.jpg" alt="Song 2">
+    <p>Song 2</p>
+  </div>
+
+  <div class="song" 
+       data-src="song3.mp3" 
+       data-message="✨ Third song, third secret message filling the page!">
+    <img src="cover3.jpg" alt="Song 3">
+    <p>Song 3</p>
+  </div>
+
+  <audio id="song"></audio>
+
+  <!-- Fullscreen popup -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <div class="popup-message" id="popupMessage"></div>
+      <button class="close-btn" id="closeBtn">✖ Close</button>
+    </div>
+  </div>
 
   <script src="script.js" defer></script>
 </body>
