@@ -228,7 +228,7 @@ p {
 }
 
 .ex1 {
-  max-height: 200px;  /* limit the height so it scrolls */
+  max-height: 400px;  /* limit the height so it scrolls */
   overflow-y: auto;   /* vertical scroll only */
   padding: 10px;
 }
