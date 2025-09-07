@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // ---------- CONFIG ----------
-  const BASELINE_MS = 300;       // how long to sample ambient noise (ms)
+  const BASELINE_MS = 200;       // how long to sample ambient noise (ms)
   const REQUIRED_FRAMES = 7;      // frames above threshold required (~100-200ms)
   const MIN_THRESHOLD = 0.012;    // minimum RMS threshold (very quiet)
   const THRESH_STD_FACTOR = 3.0;  // threshold = mean + factor * std
