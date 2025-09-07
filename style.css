@@ -151,14 +151,6 @@ p {
   color: white;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: white;
-  text-align: center;
-  padding: 50px;
-}
-
 .song {
   display: inline-block;
   margin: 20px;
