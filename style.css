@@ -135,12 +135,12 @@ h1, h2, p {
 }
 h1 {
   color: #fff;
-  font-size: 2em;
+  font-size: 3em;
   margin-top: 180px; /* moved below cake */
 }
 h2 {
   color: #fff;
-  font-size: 1.3em;
+  font-size: 1.9em;
   margin-top: 5px; /* small margin to appear below h1 */
   text-align: center;
 }
