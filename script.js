@@ -262,35 +262,30 @@ const popupMessage = document.getElementById("popupMessage");
 const closeBtn = document.getElementById("closeBtn");
 
 // Popup trigger (click on card/image/text)
-document.querySelectorAll(".song-card").forEach(card => {
-  card.addEventListener("click", () => {
-    const message = card.dataset.message;
-    popupMessage.textContent = message;
-    popup.classList.add("active");
-  });
-});
-
-// Play button (click only plays music)
 document.querySelectorAll(".play-btn").forEach(btn => {
   btn.addEventListener("click", (e) => {
     e.stopPropagation(); // prevent popup trigger
     const src = btn.dataset.src;
 
-    if (audio.src.includes(src) && !audio.paused) {
-      // if the same song is playing, pause it
-      audio.pause();
-      btn.textContent = "▶"; // change button back to play
+    if (audio.src.includes(src)) {
+      // Same song is already loaded
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = "⏸"; // show pause
+      } else {
+        audio.pause();
+        btn.textContent = "▶"; // show play
+      }
     } else {
-      // if a different song or paused, play it
+      // New song
       audio.src = src;
       audio.play();
-      btn.textContent = "⏸"; // change button to pause
+      btn.textContent = "⏸"; // show pause
+      // reset other buttons
+      document.querySelectorAll(".play-btn").forEach(otherBtn => {
+        if (otherBtn !== btn) otherBtn.textContent = "▶";
+      });
     }
-
-    // reset other buttons to "▶"
-    document.querySelectorAll(".play-btn").forEach(otherBtn => {
-      if (otherBtn !== btn) otherBtn.textContent = "▶";
-    });
   });
 });
 
