@@ -88,7 +88,7 @@ body {
   z-index: 10;
 }
 .cobertura:after, .cobertura:before {
-  background: #773703d6;
+  background: #773703;
   border-radius: 100px;
   content: "";
   position: absolute;
