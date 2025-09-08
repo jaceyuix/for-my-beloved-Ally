@@ -227,7 +227,7 @@ p {
 }
 
 .ex1 {
-  max-height: 700px; 
+  max-height: 850px; 
   overflow-y: auto;   
   padding: 10px;
 }
