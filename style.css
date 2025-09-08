@@ -210,7 +210,7 @@ p {
   padding: 12px 25px;
   border: none;
   border-radius: 6px;
-  background: crimson;
+  background: rgb(40, 3, 225);
   color: white;
   cursor: pointer;
   font-size: 50px;
@@ -218,7 +218,7 @@ p {
 }
 
 .close-btn:hover {
-  background: darkred;
+  background: rgb(47, 0, 119);
 }
 
 @keyframes fadeText {
